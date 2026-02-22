@@ -1,1 +1,6 @@
+pillow
 PyMuPDF==1.26.5
+pdf2image==1.17.0
+pre_commit==4.3.0
+pytesseract==0.3.13
+virtualenv==20.38.0
