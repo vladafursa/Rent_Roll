@@ -11,7 +11,7 @@ def extract_digital_pdf_data(page) -> str:
     :raises RuntimeError: If text extraction fails
     """
     try:
-        text = page.get_text().encode("utf8")
+        text = page.get_text()
         return text
     except Exception as e:
         logger.error(f"Failed to extract text from page: {e}")

@@ -1,7 +1,8 @@
 # Accessed and modified from: https://stackoverflow.com/a/67938713
 import logging
-import pymupdf
 from typing import Tuple
+
+import pymupdf
 
 from constants import BlockType, PDFContentThresholds, PDFType
 
