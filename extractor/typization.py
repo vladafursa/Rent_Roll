@@ -1,8 +1,7 @@
 # Accessed and modified from: https://stackoverflow.com/a/67938713
 import logging
+import pymupdf
 from typing import Tuple
-
-import fitz
 
 from constants import BlockType, PDFContentThresholds, PDFType
 
@@ -12,7 +11,7 @@ logger = logging.getLogger(__name__)
 def recognise_pdf_type(page) -> PDFType:
     """
     identifies page type based on text and image coverage.
-    :params page: fitz.Page object to analyze
+    :params page: pymupdf.Page object to analyze
     :return:  PDFType: SCANNED, DIGITAL, HYBRID, or UNKNOWN
     :raises ValueError: If page is invalid
     """
@@ -44,7 +43,7 @@ def recognise_pdf_type(page) -> PDFType:
 def _validate_page(page):
     """
     Validates page object
-    :params page: fitz.Page object
+    :params page: pymupdf.Page object
     :raises ValueError: If page is invalid
     """
     if not page or not page.rect:
@@ -55,7 +54,7 @@ def _validate_page(page):
 def _calculate_areas(page) -> Tuple[float, float, float]:
     """
     calculates the area that is covered by text, image, other
-    :param page: fitz.Page object
+    :param page: pymupdf.Page object
     :return: image area, text area, other area
     """
     img_area = 0.0
@@ -64,7 +63,7 @@ def _calculate_areas(page) -> Tuple[float, float, float]:
     blocks = page.get_text("blocks")
 
     for block in blocks:
-        rect = fitz.Rect(block[:4])
+        rect = pymupdf.Rect(block[:4])
         block_type = block[
             6
         ]  # (x0, y0, x1, y1, "lines in block", block_no, block_type) - format of blocks
