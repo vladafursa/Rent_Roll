@@ -1,7 +1,8 @@
-from enum import Enum
-from dataclasses import dataclass
-from typing import Optional, List
 import re
+from dataclasses import dataclass
+from enum import Enum
+from typing import List, Optional
+
 
 class TenantType(Enum):
     INDUSTRIAL = "industrial"
